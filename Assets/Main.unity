@@ -916,7 +916,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nearBorder: 55
   farBorder: 110
-  tree: {fileID: 1120503831854164, guid: 58144f9b8c496ef45833521fdb034d11, type: 2}
+  TerraObjects:
+  - {fileID: 1120503831854164, guid: 0c446dc65da22f24e992314d864fbdaa, type: 2}
+  - {fileID: 1120503831854164, guid: 0c446dc65da22f24e992314d864fbdaa, type: 2}
+  - {fileID: 1120503831854164, guid: 0c446dc65da22f24e992314d864fbdaa, type: 2}
+  - {fileID: 1120503831854164, guid: 0c446dc65da22f24e992314d864fbdaa, type: 2}
+  - {fileID: 1794264353031984, guid: 6e1def531c4baaf4387bc4283f7ef134, type: 2}
+  - {fileID: 1415099511820332, guid: d64bcd605f1bc084588c5a35592f7fc3, type: 2}
+  - {fileID: 1415099511820332, guid: d64bcd605f1bc084588c5a35592f7fc3, type: 2}
+  - {fileID: 1415099511820332, guid: d64bcd605f1bc084588c5a35592f7fc3, type: 2}
   Density: 0.08
   terraParent: {fileID: 2099500208}
 --- !u!114 &379133203
