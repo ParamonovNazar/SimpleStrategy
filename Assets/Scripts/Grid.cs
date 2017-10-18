@@ -19,6 +19,9 @@ public class Grid : MonoBehaviour {
     [SerializeField]
     private GameObject Cell;
 
+    [SerializeField]
+    private GameObject gridParent;
+
     private bool[,] StateCell;
     private GameObject[,] grid;
 
@@ -33,6 +36,7 @@ public class Grid : MonoBehaviour {
                 pos += new Vector3(i * CellSize * UNITSIZE, 0, j * CellSize * UNITSIZE);
                 Quaternion q = Quaternion.Euler(0, 0, 0);
                 GameObject cell = Instantiate(Cell, pos, q);
+                cell.transform.SetParent(gridParent.transform);
                 cell.transform.localScale = new Vector3(CellSize, 1, CellSize);
                 StateCell[i, j] = true;
                 cell.SetActive(false);
@@ -102,9 +106,28 @@ public class Grid : MonoBehaviour {
         return true;
     }
 
-    public Vector3 GetGridCenter()
+    public bool CheckMove(Vector3 pos, int c, int r)
+    {
+        float StartX = StartCell.x;
+        float StartZ = StartCell.z;
+
+        int colBegin = Mathf.RoundToInt((pos.x - StartX) / (UNITSIZE * CellSize));
+        int rowBegin = Mathf.RoundToInt((pos.z - StartZ) / (UNITSIZE * CellSize));
+        if ((colBegin + c > col) || (rowBegin + r > row) || (colBegin < 0) || (rowBegin < 0))
+        {
+            return false;
+        }
+        return true;
+    }
+
+    public Vector3 GetGridStart()
     {
         return StartCell;
+    }
+
+    public Vector3 GetGridCenter()
+    {
+        return StartCell + new Vector3((col/4)*UNITSIZE,0,(row/4)*UNITSIZE);
     }
 
     public Vector3 GetCellCenter(float x, float z) {

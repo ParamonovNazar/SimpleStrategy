@@ -13,6 +13,9 @@ public class PlaceGenerator : MonoBehaviour {
     private GameObject tree;
     [SerializeField]
     private float Density=1f;
+
+    [SerializeField]
+    private GameObject terraParent;
     void Start()
     {
         int CountObects = (int)(farBorder * farBorder * Density);
@@ -28,15 +31,10 @@ public class PlaceGenerator : MonoBehaviour {
 
         for (int i = 0; i < CountObects; i++)
         {
-            if (Mathf.Abs(TressPositions[i].x) < nearBorder && Mathf.Abs(TressPositions[i].z) < nearBorder) {
-
-            }
-        }
-        for (int i = 0; i < CountObects; i++)
-        {
             if (!(Mathf.Abs(TressPositions[i].x) < nearBorder && Mathf.Abs(TressPositions[i].z) < nearBorder))
             {
-                Instantiate(tree, TressPositions[i], transform.rotation);
+                GameObject terra =Instantiate(tree, TressPositions[i], transform.rotation);
+                terra.transform.SetParent(terraParent.transform);
             }  
         }
     }

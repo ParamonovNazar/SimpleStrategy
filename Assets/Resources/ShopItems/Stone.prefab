@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114349905369849010}
   - component: {fileID: 114242925601475252}
   m_Layer: 5
-  m_Name: Tower
+  m_Name: Stone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,9 +190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 501edfdb288ff8847a72ebfb4b0d60fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NameItem: Tower
-  Prefab: {fileID: 1362722585986984, guid: 07b1b7691a0f27a4cbcbbc223557752a, type: 2}
-  Icon: {fileID: 21300000, guid: 14226f666872de9449514ef4b49fbf75, type: 3}
+  NameItem: Stone
+  Prefab: {fileID: 1514923954384918, guid: 05a902cdba4711e4faf824dc4f66ab98, type: 2}
+  Icon: {fileID: 21300000, guid: a52cecf6473bbbe4096d606618711284, type: 3}
 --- !u!222 &222257019408700784
 CanvasRenderer:
   m_ObjectHideFlags: 1

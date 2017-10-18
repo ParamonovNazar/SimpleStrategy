@@ -20,6 +20,8 @@ public class FogGenerator : MonoBehaviour {
     [SerializeField]
     private Color ColorFog = Color.white;
 
+    [SerializeField]
+    private GameObject fogParent;
 
     public void StartUp() {
         for (float j = 0; j < CountA; j++)
@@ -42,7 +44,7 @@ public class FogGenerator : MonoBehaviour {
                 c.a = Mathf.Pow(factor, i/(float)CountPlane)-1f;
                 //c.a = 1 - 1f / Mathf.Pow(FogGenerator.EXP, factor * ( Mathf.Abs((newPositon - center).magnitude - Rad)));
                 rend.material.color = c;
-               
+                panel.transform.SetParent(fogParent.transform);
             }
         }
     }

@@ -90,10 +90,8 @@
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Fog.shader" />
     <None Include="Assets\FromAssetStore\Baker House\Readme.txt" />
     <None Include="Assets\FromAssetStore\Mushroom house\StandardDoubleSided.shader" />
-    <None Include="Assets\Shaders\FogShader — копия.shader" />
     <None Include="Assets\Shaders\FogShader.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -45,10 +45,10 @@ public class BuildingManager : MonoBehaviour {
             }
             else {
                 Quaternion q = Quaternion.Euler(0, 0, 0);
-                tryToLacate = Instantiate(building, GridManager.GetGridCenter(), q);
+                tryToLacate = Instantiate(building, GridManager.GetGridStart(), q);
                 bh = tryToLacate.GetComponent<BuildingHelper>();
                 bh.SetStart(GridManager.GetGridCenter());
-                uIManager.ChangeActiveCancel(true);
+                uIManager.ChangeActiveBuildingPanel(true);
             }
         }
         if (tryToLacate) {
@@ -56,33 +56,33 @@ public class BuildingManager : MonoBehaviour {
         }
     }
 
-    public void MoveBuildingUp() {
+    public void MoveBuildingRight() {
         Vector3 newPos = bh.GetStart() + new Vector3(GridManager.CellSize * Grid.UNITSIZE, 0, 0);
-        if (GridManager.CheckArea(newPos, bh.col, bh.row))
-        {
-            bh.SetStart(newPos);
-        }
-    }
-    public void MoveBuildingDown()
-    {
-        Vector3 newPos = bh.GetStart() - new Vector3(GridManager.CellSize * Grid.UNITSIZE, 0, 0);
-        if (GridManager.CheckArea(newPos, bh.col, bh.row))
+        if (GridManager.CheckMove(newPos, bh.col, bh.row))
         {
             bh.SetStart(newPos);
         }
     }
     public void MoveBuildingLeft()
     {
-        Vector3 newPos = bh.GetStart() - new Vector3(0, 0, GridManager.CellSize * Grid.UNITSIZE);
-        if (GridManager.CheckArea(newPos, bh.col, bh.row))
+        Vector3 newPos = bh.GetStart() - new Vector3(GridManager.CellSize * Grid.UNITSIZE, 0, 0);
+        if (GridManager.CheckMove(newPos, bh.col, bh.row))
         {
             bh.SetStart(newPos);
         }
     }
-    public void MoveBuildingRight()
+    public void MoveBuildingDown()
+    {
+        Vector3 newPos = bh.GetStart() - new Vector3(0, 0, GridManager.CellSize * Grid.UNITSIZE);
+        if (GridManager.CheckMove(newPos, bh.col, bh.row))
+        {
+            bh.SetStart(newPos);
+        }
+    }
+    public void MoveBuildingUp()
     {
         Vector3 newPos = bh.GetStart() + new Vector3(0, 0, GridManager.CellSize * Grid.UNITSIZE);
-        if (GridManager.CheckArea(newPos, bh.col, bh.row))
+        if (GridManager.CheckMove(newPos, bh.col, bh.row))
         {
             bh.SetStart(newPos);
         }
@@ -96,7 +96,7 @@ public class BuildingManager : MonoBehaviour {
             tryToLacate = Instantiate(item.Prefab, GridManager.GetGridCenter(), Quaternion.identity);
             bh = tryToLacate.GetComponent<BuildingHelper>();
             bh.SetStart(GridManager.GetGridCenter());
-            uIManager.ChangeActiveCancel(true);
+            uIManager.ChangeActiveBuildingPanel(true);
         }
     }
 
@@ -106,7 +106,7 @@ public class BuildingManager : MonoBehaviour {
             buildings.Add(tryToLacate);
             GridManager.Build(bh.topLeftOfArea, bh.col, bh.row);
             tryToLacate = null;
-            uIManager.ChangeActiveCancel(false);
+            uIManager.ChangeActiveBuildingPanel(false);
         }
         else {
             Debug.Log("BUSY!!!");
@@ -115,6 +115,10 @@ public class BuildingManager : MonoBehaviour {
 
     public void CancelBuilding() {
         Destroy(tryToLacate);
-        uIManager.ChangeActiveCancel(false);
+        uIManager.ChangeActiveBuildingPanel(false);
+    }
+    public void ApplyBuilding()
+    {
+        Locate();
     }
 }

@@ -4,7 +4,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField]
     private GameObject ShopLabel;
     [SerializeField]
-    private GameObject Cancel;
+    private GameObject BuildingPanel;
     // Use this for initialization
     void Start () {
 		
@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour {
         ShopLabel.SetActive(!ShopLabel.activeSelf);
     }
 
-    public void ChangeActiveCancel(bool active) {
-        Cancel.SetActive(active);
+    public void ChangeActiveBuildingPanel(bool active) {
+        BuildingPanel.SetActive(active);
     }
 }
